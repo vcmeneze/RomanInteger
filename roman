@@ -1,0 +1,33 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        soma = 0
+        previous = 0
+
+        for char in s:
+            if char == 'I': 
+                i = 1
+            elif char == 'V': 
+                i = 5
+            elif char == 'X': 
+                i = 10
+            elif char == 'L': 
+                i = 50
+            elif char == 'C': 
+                i = 100
+            elif char == 'D': 
+                i = 500
+            elif char == 'M': 
+                i = 1000
+            else:
+                continue
+
+            if 'i' in locals() and previous < i and previous != 0:
+                i = i - previous
+                soma -= previous
+                soma += i
+            else: 
+                soma += i
+
+            previous = i
+
+        return soma
